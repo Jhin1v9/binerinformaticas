@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Serviços de Informática em Sabadell - Formatação, Montagem e Mais 💻✨</title>
+<style>
+  :root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6610f2;
+    --accent-color: #20c997;
+    --background-color: #f8f9fa;
+    --text-color: #212529;
+    --border-radius: 16px;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    scroll-behavior: smooth;
+  }
+  header {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1.2rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    user-select: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .logo-icon {
+    width: 52px;
+    height: 52px;
+    fill: white;
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.35));
+    transform: rotate(-10deg);
+    transition: transform 0.3s ease;
+  }
+  .logo-icon:hover {
+    transform: rotate(0deg) scale(1.3);
+    filter: drop-shadow(0 0 10px var(--accent-color));
+  }
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin: 0;
+    font-style: italic;
+    letter-spacing: 0.1em;
+    text-shadow:
+      3px 3px 6px rgba(0,0,0,0.7),
+      0 0 10px var(--accent-color);
+  }
+  nav {
+    margin-top: 1rem;
+    text-align: center;
+    user-select: none;
+  }
+  nav a {
+    color: white;
+    margin: 0 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  nav a:hover,
+  nav a:focus-visible {
+    background-color: var(--accent-color);
+    color: #fff;
+    outline: none;
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  section {
+    height: auto;
+    min-height: 85vh;
+    background: white;
+    border-radius: var(--border-radius);
+    margin: 1rem 1rem 2rem;
+    padding: 1.5rem 2rem 2rem;
+    box-shadow: 0 10px 25px rgb(0 0 0 / 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    opacity: 0;
+    transform: scale(0.85) translateY(40px);
+    transition: opacity 0.75s cubic-bezier(0.39,0.575,0.565,1), 
+                transform 0.75s cubic-bezier(0.39,0.575,0.565,1);
+  }
+  section.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    box-shadow: 0 15px 40px rgb(0 122 255 / 0.3);
+  }
+  section:nth-child(even) {
+    background: #f2f5f8;
+  }
+  section h2 {
+    color: var(--secondary-color);
+    font-size: 2.4rem;
+    margin: 0;
+    user-select: none;
+    font-weight: 900;
+    text-align: center;
+  }
+  section h2 span.emoji {
+    font-size: 2.6rem;
+    margin-right: 0.4rem;
+  }
+  section svg.icon {
+    width: 100px;
+    height: 100px;
+    stroke: var(--primary-color);
+    stroke-width: 1.4;
+    fill: none;
+    transition: stroke 0.5s ease, fill 0.5s ease;
+  }
+  section.visible svg.icon {
+    stroke: var(--accent-color);
+    fill: var(--accent-color);
+    filter: drop-shadow(0 0 6px var(--accent-color));
+  }
+  section div.content {
+    max-width: 640px;
+    text-align: left;
+  }
+  section p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  section ul {
+    font-size: 1.15rem;
+    color: #444;
+    margin: 0 0 1.2rem 1.5rem;
+  }
+  section ul li {
+    margin-bottom: 0.6rem;
+    line-height: 1.45;
+  }
+  .price {
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    user-select: text;
+    text-align: center;
+  }
+  footer {
+    text-align: center;
+    padding: 1.6rem 0;
+    color: #6c757d;
+    font-size: 1rem;
+    user-select: none;
+  }
+  .floating-icons {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 15000;
+  }
+  .floating-icons a {
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 7px 14px rgb(0 0 0 / 0.25);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .floating-icons a:hover,
+  .floating-icons a:focus {
+    background-color: var(--accent-color);
+    box-shadow: 0 10px 20px rgb(0 122 255 / 0.6);
+    outline: none;
+  }
+  .floating-icons svg {
+    width: 28px;
+    height: 28px;
+    fill: white;
+  }
+  @media (min-width: 768px) {
+    section {
+      padding: 2rem 3rem 3rem;
+    }
+    section svg.icon {
+      width: 140px;
+      height: 140px;
+    }
+    section div.content {
+      text-align: left;
+    }
+  }
+  @media (max-width: 850px) {
+    section {
+      min-height: auto;
+      padding: 1.5rem 1.5rem 2rem;
+      margin: 1rem 0.4rem 2rem;
+    }
+    section svg.icon {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 0.7rem;
+    }
+    section div.content {
+      max-width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-container" aria-label="Logo BINER INFORMÁTICAS">
+    <svg class="logo-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" >
+      <circle cx="32" cy="32" r="30" stroke="white" stroke-width="3" fill="none"/>
+      <path d="M16 48 L48 16 M20 16 L44 40" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <path d="M28 52h8l-4-12z" fill="var(--accent-color)"/>
+    </svg>
+    <h1>BINER INFORMÁTICAS</h1>
+  </div>
+  <nav>
+    <a href="#formatacao" tabindex="0">Formatação</a>
+    <a href="#criacao-sites" tabindex="0">Criação de Sites</a>
+    <a href="#limpeza" tabindex="0">Limpeza</a>
+    <a href="#instalacao" tabindex="0">Instalação de Programas</a>
+    <a href="#montagem" tabindex="0">Montagem de Computadores</a>
+  </nav>
+</header>
+
+<main>
+
+<section id="formatacao" aria-labelledby="formatacao-title">
+  <h2 id="formatacao-title"><span class="emoji">🧹</span>Formatação de Computadores</h2>
+  <svg viewBox="0 0 64 64" class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <rect x="12" y="12" width="40" height="40" rx="6" ry="6" stroke-width="3" />
+    <path d="M20 32h24" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="32" cy="44" r="4" stroke-width="3" />
+    <path d="M32 16v12" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+  <div class="content">
+    <p>A formatação é o processo fundamental para revitalizar seu computador, eliminando vírus, arquivos corrompidos e problemas de sistema.</p>
+    <ul>
+      <li>Remoção completa de malwares e softwares indesejados.</li>
+      <li>Reinstalação limpa do sistema operacional (Windows, Linux).</li>
+      <li>Backup e restauração segura dos seus arquivos importantes.</li>
+      <li>Configuração otimizada para melhorar a velocidade e estabilidade.</li>
+    </ul>
+    <p class="price">💶 Preço base: €50 - €80 em Sabadell</p>
+  </div>
+</section>
+
+<section id="criacao-sites" aria-labelledby="criacao-sites-title">
+  <h2 id="criacao-sites-title"><span class="emoji">🌐</span>Criação de Sites</h2>
+  <svg viewBox="0 0 64 64" class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="32" r="28" stroke-width="3" />
+    <path d="M12 32h40" stroke-width="3" stroke-linecap="round"/>
+    <path d="M32 12v40" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="32" cy="32" r="8" stroke-width="3" fill="none"/>
+  </svg>
+  <div class="content">
+    <p>Transformamos suas ideias em uma presença online profissional e visualmente atraente, totalmente responsiva para todos os dispositivos.</p>
+    <ul>
+      <li>Design personalizado alinhado à identidade da sua marca.</li>
+      <li>Desenvolvimento com HTML5, CSS3, JavaScript e frameworks atuais.</li>
+      <li>Funcionalidades como blog, formulário de contato e pequenas lojas virtuais.</li>
+      <li>Hospedagem, manutenção e suporte contínuo.</li>
+    </ul>
+    <p class="price">💶 Preço base: €300 - €1200 em Sabadell, conforme escopo</p>
+  </div>
+</section>
+
+<section id="limpeza" aria-labelledby="limpeza-title">
+  <h2 id="limpeza-title"><span class="emoji">✨</span>Limpeza de Computadores</h2>
+  <svg viewBox="0 0 64 64" class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 48h32v6H16z" stroke-width="3" />
+    <path d="M24 12v28h6V12z" stroke-width="3"/>
+    <path d="M38 12v28h6V12z" stroke-width="3"/>
+    <circle cx="32" cy="40" r="6" stroke-width="3" fill="none"/>
+  </svg>
+  <div class="content">
+    <p>Manter o hardware limpo é vital para evitar superaquecimento e garantir o máximo desempenho e longevidade do equipamento.</p>
+    <ul>
+      <li>Remoção profissional de poeira interna e sujeira acumulada.</li>
+      <li>Limpeza e lubrificação das ventoinhas para funcionamento silencioso.</li>
+      <li>Aplicação de pasta térmica de alta qualidade para melhor dissipação de calor.</li>
+      <li>Verificação geral do hardware para identificar sinais de desgaste.</li>
+    </ul>
+    <p class="price">💶 Preço base: €30 - €60 em Sabadell</p>
+  </div>
+</section>
+
+<section id="instalacao" aria-labelledby="instalacao-title">
+  <h2 id="instalacao-title"><span class="emoji">⬇️</span>Instalação de Programas</h2>
+  <svg viewBox="0 0 64 64" class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 16h48v6H8z" stroke-width="3" 
+      stroke-linecap="round"/>
+    <path d="M8 26h48v6H8z" stroke-width="3" 
+      stroke-linecap="round"/>
+    <path d="M8 36h48v6H8z" stroke-width="3" 
+      stroke-linecap="round"/>
+    <path d="M24 48h16l-8-14z" fill="none" stroke-width="3" 
+      stroke-linejoin="round"/>
+  </svg>
+  <div class="content">
+    <p>Garantimos que você tenha os softwares essenciais funcionando perfeitamente, configurados para máxima eficiência.</p>
+    <ul>
+      <li>Instalação de antivírus, suítes de escritório, navegadores e outros programas.</li>
+      <li>Atualizações automáticas configuradas para manter seu sistema seguro.</li>
+      <li>Configuração personalizada conforme suas necessidades profissionais ou pessoais.</li>
+      <li>Suporte e troubleshoot para eventuais erros após instalação.</li>
+    </ul>
+    <p class="price">💶 Preço base: €10 - €40 por programa em Sabadell</p>
+  </div>
+</section>
+
+<section id="montagem" aria-labelledby="montagem-title">
+  <h2 id="montagem-title"><span class="emoji">🛠️</span>Montagem de Computadores</h2>
+  <svg viewBox="0 0 64 64" class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <rect x="12" y="12" width="40" height="40" rx="6" ry="6" stroke-width="3"/>
+    <path d="M20 20h24v24H20z" stroke-width="3" fill="none"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke-width="3" />
+  </svg>
+  <div class="content">
+    <p>Montamos seu computador ideal considerando desempenho, custo-benefício e a finalidade de uso, com peças de qualidade testadas.</p>
+    <ul>
+      <li>Seleção dos melhores componentes conforme seu orçamento.</li>
+      <li>Montagem cuidadosa garantindo funcionamento perfeito.</li>
+      <li>Testes completos e instalação de drivers e atualizações.</li>
+      <li>Suporte técnico para dúvidas e upgrades futuros.</li>
+    </ul>
+    <p class="price">💶 Preço base: €70 - €150 apenas montagem em Sabadell (componentes vendidos separadamente)</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  &copy; 2024 Biner Informáticas • Desenvolvido com ❤️ e tecnologia moderna
+</footer>
+
+<div class="floating-icons" aria-label="Links para WhatsApp e Instagram">
+  <a href="https://wa.me/34699887766" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <path fill="currentColor" d="M20.52 3.48A11.82 11.82 0 0012 0a11.78 11.78 0 00-9.46 4.92 11.87 11.87 0 00-1.9 7.29 11.76 11.76 0 002 6.29l-2 6 6-2a11.8 11.8 0 009.57 2.48 11.88 11.88 0 007.37-7.46 11.82 11.82 0 00-3.62-14.04zm-8.06 15.54a8.89 8.89 0 01-4.48-1.09l-.32-.18-2.66.89.9-2.6-.2-.31a8.87 8.87 0 011.1-11.82 8.8 8.8 0 0112.44 12.44 8.85 8.85 0 01-8.48 2.67zm4.53-4.54c-.22-.11-1.3-.64-1.5-.71s-.32-.11-.45.11-.52.7-.64.85-.24.16-.45.05a5.13 5.13 0 01-1.5-.92-5.59 5.59 0 01-1.04-1.29c-.11-.2 0-.31.08-.42a2.34 2.34 0 00.34-.61c.11-.21 0-.37-.06-.52s-.45-1.1-.62-1.53-.32-.36-.45-.36h-.38a1.55 1.55 0 00-1.13.54 4.84 4.84 0 00-1.6 3.72 7.17 7.17 0 001.64 3.35 9.08 9.08 0 003.72 2.91 5 5 0 001.75.44 3.1 3.1 0 001.95-.78 3.06 3.06 0 001-1.37c.07-.13.07-.24.05-.36s-.07-.2-.15-.31a.55.55 0 00-.17-.19z"/>
+    </svg>
+  </a>
+  <a href="https://www.instagram.com/abner_ribeiro.mendes/" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <path fill="currentColor" d="M7.75 2a5.75 5.75 0 00-5.75 5.75v8.5A5.75 5.75 0 007.75 22h8.5a5.75 5.75 0 005.75-5.75v-8.5A5.75 5.75 0 0016.25 2h-8.5zm-.1 2.25h8.7a3.5 3.5 0 013.5 3.5v7a3.5 3.5 0 01-3.5 3.5h-8.7a3.5 3.5 0 01-3.5-3.5v-7a3.5 3.5 0 013.5-3.5zm4.35 3.12a4.38 4.38 0 104.38 4.38 4.38 4.38 0 00-4.38-4.38zm0 2.25a2.13 2.13 0 11-2.13 2.13 2.13 2.13 0 012.13-2.13zm3.75-.83a1 1 0 10-1 1 1 1 0 001-1z"/>
+    </svg>
+  </a>
+</div>
+
+<footer>
+  &copy; 2024 Biner Informáticas • Desenvolvido com ❤️ e tecnologia moderna
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('main section');
+
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.4, // 40% visible triggers animation
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+</script>
+
+</body>
+</html>
+
