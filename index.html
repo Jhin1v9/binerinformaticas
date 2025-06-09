@@ -307,13 +307,14 @@
   <h3 id="calculator-title">Calculadora de Serviços & Orçamento</h3>
   <form id="calcForm" onsubmit="return false;">
     <div class="service-item">
-      <label for="formatacaoChk">Formatação de Computador (€30)</label>
-      <input type="checkbox" id="formatacao" name="services" value="30" />
-    </div>
-    <div class="service-item">
-      <label for="formatacaoChk">Backup (€15)</label>
-      <input type="checkbox" id="backup" name="services" value="15" />
-    </div>
+  <input type="checkbox" id="formatacao" name="services" value="25">
+  <label for="formatacao">Formatação</label>
+</div>
+<div class="service-item">
+  <input type="checkbox" id="backup" name="services" value="10">
+  <label for="backup">Backup de arquivos</label>
+</div>
+
     <div class="service-item">
       <label for="criacaoChk">Criação de Site a partir de (€150 )</label>
       <input type="checkbox" id="criacaoChk" name="services" value="150" />
@@ -350,6 +351,19 @@
     let total = 0;
     let selectedServices = [];
 
+    const formatCheckbox = document.getElementById('formatacao');
+    const backupCheckbox = document.getElementById('backup');
+
+    // Se "formatação" não estiver marcada, desmarcar e desativar "backup"
+    if (!formatCheckbox.checked) {
+      backupCheckbox.checked = false;
+      backupCheckbox.disabled = true;
+      backupCheckbox.parentElement.style.opacity = 0.5;
+    } else {
+      backupCheckbox.disabled = false;
+      backupCheckbox.parentElement.style.opacity = 1;
+    }
+
     checkboxes.forEach(cb => {
       if (cb.checked) {
         total += parseFloat(cb.value);
@@ -361,6 +375,7 @@
     document.getElementById('totalPrice').textContent = `Total: €${total}`;
 
     const whatsappBtn = document.getElementById('whatsappBtn');
+
     if (total > 0) {
       const message = encodeURIComponent(
         `Olá! Gostaria de solicitar um orçamento dos seguintes serviços:\n\n` +
@@ -378,31 +393,15 @@
     }
   }
 
-  function setupDependencies() {
-    const formatacao = document.getElementById("formatacao");
-    const backup = document.getElementById("backup");
-
-    function checkDependency() {
-      if (formatacao.checked) {
-        backup.disabled = false;
-      } else {
-        backup.checked = false;
-        backup.disabled = true;
-      }
-      updateTotal();
-    }
-
-    formatacao.addEventListener("change", checkDependency);
-    checkDependency(); // inicializar
-  }
-
+  // Aplica evento para todos os checkboxes
   document.querySelectorAll('input[name="services"]').forEach(cb => {
     cb.addEventListener('change', updateTotal);
   });
 
-  setupDependencies();
-  updateTotal();
+  // Inicializa estado ao carregar
+  window.addEventListener('DOMContentLoaded', updateTotal);
 </script>
+
 
 </body>
 </html>
