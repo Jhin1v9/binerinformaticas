@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Serviços de Informática em Sabadell - Formatação, Montagem e Mais 💻✨</title>
+<title>Serviços de Informática em Sabadell - Calculadora & Orçamento WhatsApp 💻✨</title>
 <style>
   :root {
     --primary-color: #0d6efd;
@@ -86,37 +87,24 @@
   }
   main {
     max-width: 900px;
-    margin: 0 auto;
+    margin: 2rem auto 4rem;
+    padding: 0 1rem;
   }
   section {
-    height: auto;
-    min-height: 85vh;
     background: white;
     border-radius: var(--border-radius);
-    margin: 1rem 1rem 2rem;
-    padding: 1.5rem 2rem 2rem;
+    margin: 1rem 0 2rem;
+    padding: 2rem 2.5rem;
     box-shadow: 0 10px 25px rgb(0 0 0 / 0.12);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.6rem;
-    opacity: 0;
-    transform: scale(0.85) translateY(40px);
-    transition: opacity 0.75s cubic-bezier(0.39,0.575,0.565,1), 
-                transform 0.75s cubic-bezier(0.39,0.575,0.565,1);
-  }
-  section.visible {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    box-shadow: 0 15px 40px rgb(0 122 255 / 0.3);
-  }
-  section:nth-child(even) {
-    background: #f2f5f8;
   }
   section h2 {
     color: var(--secondary-color);
     font-size: 2.4rem;
-    margin: 0;
+    margin: 0 0 1rem;
     user-select: none;
     font-weight: 900;
     text-align: center;
@@ -125,35 +113,9 @@
     font-size: 2.6rem;
     margin-right: 0.4rem;
   }
-  section svg.icon {
-    width: 100px;
-    height: 100px;
-    stroke: var(--primary-color);
-    stroke-width: 1.4;
-    fill: none;
-    transition: stroke 0.5s ease, fill 0.5s ease;
-  }
-  section.visible svg.icon {
-    stroke: var(--accent-color);
-    fill: var(--accent-color);
-    filter: drop-shadow(0 0 6px var(--accent-color));
-  }
-  section div.content {
+  .content {
     max-width: 640px;
     text-align: left;
-  }
-  section p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
-  section ul {
-    font-size: 1.15rem;
-    color: #444;
-    margin: 0 0 1.2rem 1.5rem;
-  }
-  section ul li {
-    margin-bottom: 0.6rem;
-    line-height: 1.45;
   }
   .price {
     font-weight: 900;
@@ -161,6 +123,68 @@
     color: var(--accent-color);
     user-select: text;
     text-align: center;
+    margin-top: 1rem;
+  }
+  /* Calculadora */
+  .calculator {
+    background: #eef6ff;
+    border-radius: var(--border-radius);
+    padding: 1.8rem 2rem;
+    box-shadow: inset 0 0 15px rgb(13 110 253 / 0.2);
+    max-width: 640px;
+    width: 100%;
+  }
+  .calculator h3 {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    user-select: none;
+    text-align: center;
+  }
+  .service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .service-item label {
+    font-size: 1.1rem;
+    user-select: none;
+  }
+  .service-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  .service-price {
+    font-weight: 700;
+    color: var(--secondary-color);
+  }
+  .total {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--accent-color);
+    text-align: center;
+    margin: 1.5rem 0 1rem;
+  }
+  .btn-whatsapp {
+    display: block;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.75rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    user-select: none;
+    transition: background-color 0.3s ease;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .btn-whatsapp:hover,
+  .btn-whatsapp:focus {
+    background-color: var(--accent-color);
+    outline: none;
   }
   footer {
     text-align: center;
@@ -169,63 +193,10 @@
     font-size: 1rem;
     user-select: none;
   }
-  .floating-icons {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    z-index: 15000;
-  }
-  .floating-icons a {
-    background-color: var(--primary-color);
-    border-radius: 50%;
-    width: 52px;
-    height: 52px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 7px 14px rgb(0 0 0 / 0.25);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  .floating-icons a:hover,
-  .floating-icons a:focus {
-    background-color: var(--accent-color);
-    box-shadow: 0 10px 20px rgb(0 122 255 / 0.6);
-    outline: none;
-  }
-  .floating-icons svg {
-    width: 28px;
-    height: 28px;
-    fill: white;
-  }
-  @media (min-width: 768px) {
-    section {
-      padding: 2rem 3rem 3rem;
-    }
-    section svg.icon {
-      width: 140px;
-      height: 140px;
-    }
-    section div.content {
-      text-align: left;
-    }
-  }
-  @media (max-width: 850px) {
-    section {
-      min-height: auto;
-      padding: 1.5rem 1.5rem 2rem;
-      margin: 1rem 0.4rem 2rem;
-    }
-    section svg.icon {
-      width: 120px;
-      height: 120px;
-      margin-bottom: 0.7rem;
-    }
-    section div.content {
-      max-width: 100%;
-      text-align: center;
+  @media (max-width: 650px) {
+    main {
+      margin: 1rem auto 3rem;
+      padding: 0 1rem;
     }
   }
 </style>
@@ -254,12 +225,6 @@
 
 <section id="formatacao" aria-labelledby="formatacao-title">
   <h2 id="formatacao-title"><span class="emoji">🧹</span>Formatação de Computadores</h2>
-  <svg viewBox="0 0 64 64" class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-    <rect x="12" y="12" width="40" height="40" rx="6" ry="6" stroke-width="3" />
-    <path d="M20 32h24" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="32" cy="44" r="4" stroke-width="3" />
-    <path d="M32 16v12" stroke-width="3" stroke-linecap="round"/>
-  </svg>
   <div class="content">
     <p>A formatação é o processo fundamental para revitalizar seu computador, eliminando vírus, arquivos corrompidos e problemas de sistema.</p>
     <ul>
@@ -273,135 +238,145 @@
 </section>
 
 <section id="criacao-sites" aria-labelledby="criacao-sites-title">
-  <h2 id="criacao-sites-title"><span class="emoji">🌐</span>Criação de Sites</h2>
-  <svg viewBox="0 0 64 64" class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="32" cy="32" r="28" stroke-width="3" />
-    <path d="M12 32h40" stroke-width="3" stroke-linecap="round"/>
-    <path d="M32 12v40" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="32" cy="32" r="8" stroke-width="3" fill="none"/>
-  </svg>
+  <h2 id="criacao-sites-title"><span class="emoji">💻</span>Criação de Sites Profissionais</h2>
   <div class="content">
-    <p>Transformamos suas ideias em uma presença online profissional e visualmente atraente, totalmente responsiva para todos os dispositivos.</p>
+    <p>Desenvolvimento completo de sites responsivos para sua empresa, portfólio ou negócio pessoal.</p>
     <ul>
-      <li>Design personalizado alinhado à identidade da sua marca.</li>
-      <li>Desenvolvimento com HTML5, CSS3, JavaScript e frameworks atuais.</li>
-      <li>Funcionalidades como blog, formulário de contato e pequenas lojas virtuais.</li>
-      <li>Hospedagem, manutenção e suporte contínuo.</li>
+      <li>Design moderno e otimizado para SEO.</li>
+      <li>Integração com redes sociais e formulários.</li>
+      <li>Hospedagem e manutenção (opcional).</li>
+      <li>Consultoria personalizada para seu nicho.</li>
     </ul>
-    <p class="price">💶 Preço base: €300 - €1200 em Sabadell, conforme escopo</p>
+    <p class="price">💶 A partir de €150 em Sabadell</p>
   </div>
 </section>
 
 <section id="limpeza" aria-labelledby="limpeza-title">
-  <h2 id="limpeza-title"><span class="emoji">✨</span>Limpeza de Computadores</h2>
-  <svg viewBox="0 0 64 64" class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16 48h32v6H16z" stroke-width="3" />
-    <path d="M24 12v28h6V12z" stroke-width="3"/>
-    <path d="M38 12v28h6V12z" stroke-width="3"/>
-    <circle cx="32" cy="40" r="6" stroke-width="3" fill="none"/>
-  </svg>
+  <h2 id="limpeza-title"><span class="emoji">🧼</span>Limpeza e Otimização</h2>
   <div class="content">
-    <p>Manter o hardware limpo é vital para evitar superaquecimento e garantir o máximo desempenho e longevidade do equipamento.</p>
+    <p>Serviço de limpeza física e otimização do seu PC para garantir desempenho máximo.</p>
     <ul>
-      <li>Remoção profissional de poeira interna e sujeira acumulada.</li>
-      <li>Limpeza e lubrificação das ventoinhas para funcionamento silencioso.</li>
-      <li>Aplicação de pasta térmica de alta qualidade para melhor dissipação de calor.</li>
-      <li>Verificação geral do hardware para identificar sinais de desgaste.</li>
+      <li>Remoção de poeira interna e limpeza de componentes.</li>
+      <li>Verificação e atualização de drivers e softwares.</li>
+      <li>Otimização do sistema para maior velocidade.</li>
+      <li>Monitoramento de temperatura e desempenho.</li>
     </ul>
-    <p class="price">💶 Preço base: €30 - €60 em Sabadell</p>
+    <p class="price">💶 Preço: €40 - €60 em Sabadell</p>
   </div>
 </section>
 
 <section id="instalacao" aria-labelledby="instalacao-title">
-  <h2 id="instalacao-title"><span class="emoji">⬇️</span>Instalação de Programas</h2>
-  <svg viewBox="0 0 64 64" class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 16h48v6H8z" stroke-width="3" 
-      stroke-linecap="round"/>
-    <path d="M8 26h48v6H8z" stroke-width="3" 
-      stroke-linecap="round"/>
-    <path d="M8 36h48v6H8z" stroke-width="3" 
-      stroke-linecap="round"/>
-    <path d="M24 48h16l-8-14z" fill="none" stroke-width="3" 
-      stroke-linejoin="round"/>
-  </svg>
+  <h2 id="instalacao-title"><span class="emoji">⚙️</span>Instalação de Programas</h2>
   <div class="content">
-    <p>Garantimos que você tenha os softwares essenciais funcionando perfeitamente, configurados para máxima eficiência.</p>
+    <p>Instalamos e configuramos softwares essenciais como Windows, Office, antivírus e outros.</p>
     <ul>
-      <li>Instalação de antivírus, suítes de escritório, navegadores e outros programas.</li>
-      <li>Atualizações automáticas configuradas para manter seu sistema seguro.</li>
-      <li>Configuração personalizada conforme suas necessidades profissionais ou pessoais.</li>
-      <li>Suporte e troubleshoot para eventuais erros após instalação.</li>
+      <li>Ativação oficial e configurações personalizadas.</li>
+      <li>Suporte para atualizações e configurações pós-instalação.</li>
+      <li>Pacotes de software sob demanda.</li>
     </ul>
-    <p class="price">💶 Preço base: €10 - €40 por programa em Sabadell</p>
+    <p class="price">💶 Preço: €20 - €50 em Sabadell</p>
   </div>
 </section>
 
 <section id="montagem" aria-labelledby="montagem-title">
-  <h2 id="montagem-title"><span class="emoji">🛠️</span>Montagem de Computadores</h2>
-  <svg viewBox="0 0 64 64" class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-    <rect x="12" y="12" width="40" height="40" rx="6" ry="6" stroke-width="3"/>
-    <path d="M20 20h24v24H20z" stroke-width="3" fill="none"/>
-    <line x1="32" y1="20" x2="32" y2="44" stroke-width="3" />
-  </svg>
+  <h2 id="montagem-title"><span class="emoji">🖥️</span>Montagem de Computadores</h2>
   <div class="content">
-    <p>Montamos seu computador ideal considerando desempenho, custo-benefício e a finalidade de uso, com peças de qualidade testadas.</p>
+    <p>Montamos seu computador personalizado, com garantia de qualidade e performance.</p>
     <ul>
-      <li>Seleção dos melhores componentes conforme seu orçamento.</li>
-      <li>Montagem cuidadosa garantindo funcionamento perfeito.</li>
-      <li>Testes completos e instalação de drivers e atualizações.</li>
-      <li>Suporte técnico para dúvidas e upgrades futuros.</li>
+      <li>Consultoria para escolha dos componentes.</li>
+      <li>Montagem profissional e testes completos.</li>
+      <li>Suporte pós-montagem.</li>
     </ul>
-    <p class="price">💶 Preço base: €70 - €150 apenas montagem em Sabadell (componentes vendidos separadamente)</p>
+    <p class="price">💶 Preço: €60 - €120 em Sabadell</p>
   </div>
+</section>
+
+<!-- Calculadora e orçamento -->
+<section aria-labelledby="calculator-title" class="calculator" role="region">
+  <h3 id="calculator-title">Calculadora de Serviços & Orçamento</h3>
+  <form id="calcForm" onsubmit="return false;">
+    <div class="service-item">
+      <label for="formatacaoChk">Formatação de Computador (€65)</label>
+      <input type="checkbox" id="formatacaoChk" name="services" value="65" />
+    </div>
+    <div class="service-item">
+      <label for="criacaoChk">Criação de Site (€150)</label>
+      <input type="checkbox" id="criacaoChk" name="services" value="150" />
+    </div>
+    <div class="service-item">
+      <label for="limpezaChk">Limpeza e Otimização (€50)</label>
+      <input type="checkbox" id="limpezaChk" name="services" value="50" />
+    </div>
+    <div class="service-item">
+      <label for="instalacaoChk">Instalação de Programas (€35)</label>
+      <input type="checkbox" id="instalacaoChk" name="services" value="35" />
+    </div>
+    <div class="service-item">
+      <label for="montagemChk">Montagem de Computador (€90)</label>
+      <input type="checkbox" id="montagemChk" name="services" value="90" />
+    </div>
+    <p class="total" aria-live="polite" id="totalPrice">Total: €0</p>
+    <a href="#" class="btn-whatsapp" id="whatsappBtn" aria-label="Enviar orçamento pelo WhatsApp" target="_blank" rel="noopener noreferrer" tabindex="0">
+      Enviar Orçamento no WhatsApp
+    </a>
+  </form>
 </section>
 
 </main>
 
 <footer>
-  &copy; 2024 Biner Informáticas • Desenvolvido com ❤️ e tecnologia moderna
+  &copy; 2025 BINER INFORMÁTICAS - Sabadell, Espanha
 </footer>
 
-<div class="floating-icons" aria-label="Links para WhatsApp e Instagram">
-  <a href="https://wa.me/34699887766" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-      <path fill="currentColor" d="M20.52 3.48A11.82 11.82 0 0012 0a11.78 11.78 0 00-9.46 4.92 11.87 11.87 0 00-1.9 7.29 11.76 11.76 0 002 6.29l-2 6 6-2a11.8 11.8 0 009.57 2.48 11.88 11.88 0 007.37-7.46 11.82 11.82 0 00-3.62-14.04zm-8.06 15.54a8.89 8.89 0 01-4.48-1.09l-.32-.18-2.66.89.9-2.6-.2-.31a8.87 8.87 0 011.1-11.82 8.8 8.8 0 0112.44 12.44 8.85 8.85 0 01-8.48 2.67zm4.53-4.54c-.22-.11-1.3-.64-1.5-.71s-.32-.11-.45.11-.52.7-.64.85-.24.16-.45.05a5.13 5.13 0 01-1.5-.92-5.59 5.59 0 01-1.04-1.29c-.11-.2 0-.31.08-.42a2.34 2.34 0 00.34-.61c.11-.21 0-.37-.06-.52s-.45-1.1-.62-1.53-.32-.36-.45-.36h-.38a1.55 1.55 0 00-1.13.54 4.84 4.84 0 00-1.6 3.72 7.17 7.17 0 001.64 3.35 9.08 9.08 0 003.72 2.91 5 5 0 001.75.44 3.1 3.1 0 001.95-.78 3.06 3.06 0 001-1.37c.07-.13.07-.24.05-.36s-.07-.2-.15-.31a.55.55 0 00-.17-.19z"/>
-    </svg>
-  </a>
-  <a href="https://www.instagram.com/abner_ribeiro.mendes/" target="_blank" rel="noopener" aria-label="Instagram">
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-      <path fill="currentColor" d="M7.75 2a5.75 5.75 0 00-5.75 5.75v8.5A5.75 5.75 0 007.75 22h8.5a5.75 5.75 0 005.75-5.75v-8.5A5.75 5.75 0 0016.25 2h-8.5zm-.1 2.25h8.7a3.5 3.5 0 013.5 3.5v7a3.5 3.5 0 01-3.5 3.5h-8.7a3.5 3.5 0 01-3.5-3.5v-7a3.5 3.5 0 013.5-3.5zm4.35 3.12a4.38 4.38 0 104.38 4.38 4.38 4.38 0 00-4.38-4.38zm0 2.25a2.13 2.13 0 11-2.13 2.13 2.13 2.13 0 012.13-2.13zm3.75-.83a1 1 0 10-1 1 1 1 0 001-1z"/>
-    </svg>
-  </a>
-</div>
-
-
-
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('main section');
+  // Atualiza o total e link WhatsApp ao marcar serviços
+  function updateTotal() {
+    const checkboxes = document.querySelectorAll('input[name="services"]');
+    let total = 0;
+    let selectedServices = [];
 
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.4, // 40% visible triggers animation
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        } else {
-          entry.target.classList.remove('visible');
-        }
-      });
-    }, options);
-
-    sections.forEach(section => {
-      observer.observe(section);
+    checkboxes.forEach(cb => {
+      if (cb.checked) {
+        total += parseFloat(cb.value);
+        const label = document.querySelector(`label[for="${cb.id}"]`).textContent.trim();
+        selectedServices.push(label);
+      }
     });
+
+    const totalPriceEl = document.getElementById('totalPrice');
+    totalPriceEl.textContent = `Total: €${total}`;
+
+    const whatsappBtn = document.getElementById('whatsappBtn');
+
+    if (total > 0) {
+      // Monta mensagem para WhatsApp com os serviços selecionados e valor total
+      const message = encodeURIComponent(
+        `Olá! Gostaria de solicitar um orçamento dos seguintes serviços:\n\n` +
+        selectedServices.map(s => `- ${s}`).join('\n') +
+        `\n\nTotal estimado: €${total}\n\nObrigado!`
+      );
+
+      // Número de WhatsApp formatado internacionalmente (exemplo Espanha: +34 600 000 000)
+      const whatsappNumber = "34600000000"; // Troque para seu número real
+
+      whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${message}`;
+      whatsappBtn.style.pointerEvents = "auto";
+      whatsappBtn.style.opacity = "1";
+    } else {
+      whatsappBtn.href = "#";
+      whatsappBtn.style.pointerEvents = "none";
+      whatsappBtn.style.opacity = "0.5";
+    }
+  }
+
+  // Adiciona event listeners aos checkboxes
+  document.querySelectorAll('input[name="services"]').forEach(cb => {
+    cb.addEventListener('change', updateTotal);
   });
+
+  // Inicializa botão desativado
+  updateTotal();
 </script>
 
 </body>
 </html>
-
