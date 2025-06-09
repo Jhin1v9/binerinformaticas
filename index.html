@@ -346,23 +346,11 @@
 </footer>
 
 <script>
+  // Atualiza o total e link WhatsApp ao marcar serviços
   function updateTotal() {
     const checkboxes = document.querySelectorAll('input[name="services"]');
     let total = 0;
     let selectedServices = [];
-
-    const formatCheckbox = document.getElementById('formatacao');
-    const backupCheckbox = document.getElementById('backup');
-
-    // Se "formatação" não estiver marcada, desmarcar e desativar "backup"
-    if (!formatCheckbox.checked) {
-      backupCheckbox.checked = false;
-      backupCheckbox.disabled = true;
-      backupCheckbox.parentElement.style.opacity = 0.5;
-    } else {
-      backupCheckbox.disabled = false;
-      backupCheckbox.parentElement.style.opacity = 1;
-    }
 
     checkboxes.forEach(cb => {
       if (cb.checked) {
@@ -372,17 +360,22 @@
       }
     });
 
-    document.getElementById('totalPrice').textContent = `Total: €${total}`;
+    const totalPriceEl = document.getElementById('totalPrice');
+    totalPriceEl.textContent = `Total: €${total}`;
 
     const whatsappBtn = document.getElementById('whatsappBtn');
 
     if (total > 0) {
+      // Monta mensagem para WhatsApp com os serviços selecionados e valor total
       const message = encodeURIComponent(
         `Olá! Gostaria de solicitar um orçamento dos seguintes serviços:\n\n` +
         selectedServices.map(s => `- ${s}`).join('\n') +
         `\n\nTotal estimado: €${total}\n\nObrigado!`
       );
-      const whatsappNumber = "+34685093192";
+
+      // Número de WhatsApp formatado internacionalmente (exemplo Espanha: +34 600 000 000)
+      const whatsappNumber = "+34685093192"; // Troque para seu número real
+
       whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${message}`;
       whatsappBtn.style.pointerEvents = "auto";
       whatsappBtn.style.opacity = "1";
@@ -393,13 +386,13 @@
     }
   }
 
-  // Aplica evento para todos os checkboxes
+  // Adiciona event listeners aos checkboxes
   document.querySelectorAll('input[name="services"]').forEach(cb => {
     cb.addEventListener('change', updateTotal);
   });
 
-  // Inicializa estado ao carregar
-  window.addEventListener('DOMContentLoaded', updateTotal);
+  // Inicializa botão desativado
+  updateTotal();
 </script>
 
 
