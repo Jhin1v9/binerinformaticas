@@ -193,10 +193,35 @@
     font-size: 1rem;
     user-select: none;
   }
-  @media (max-width: 650px) {
+    .menu-mobile{
+    display: flex;
+    flex-direction: column;
+    display: none;
+  }
+  .risco{
+    width: 15px;
+    height: 2px;
+    background-color: white;
+    margin: 2px;
+  }
+  .menu-mobile-area{
+    display: none;
+    justify-content: right
+    ;
+  }
+  @media (max-width: 768px) {
     main {
       margin: 1rem auto 3rem;
       padding: 0 1rem;
+    }
+    h1{
+      font-size: 1.3rem;
+    }
+    .menu-mobile{
+      display: flex;
+    }
+    .menu{
+      display: none;
     }
   }
 
@@ -207,6 +232,7 @@
       align-items: center;
       gap:18px;
   }
+
 </style>
 </head>
 <body>
@@ -220,12 +246,21 @@
     </svg>
     <h1>BINER INFORMÁTICAS</h1>
   </div>
-  <nav>
+  <nav class="menu">
     <a href="#formatacao" tabindex="0">Formatação</a>
     <a href="#criacao-sites" tabindex="0">Criação de Sites</a>
     <a href="#limpeza" tabindex="0">Limpeza</a>
     <a href="#instalacao" tabindex="0">Instalação de Programas</a>
     <a href="#montagem" tabindex="0">Montagem de Computadores</a>
+
+    
+  </nav>
+  <nav class="menu-mobile-area">
+    <div class="menu-mobile">
+      <div class="risco"> </div>
+      <div class="risco"></div>
+      <div class="risco"></div>
+    </div>
   </nav>
 </header>
 
