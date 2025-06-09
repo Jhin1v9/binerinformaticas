@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -132,10 +131,9 @@
     border-radius: var(--border-radius);
     padding: 1.8rem 2rem;
     box-shadow: inset 0 0 15px rgb(13 110 253 / 0.2);
+    
     width: 100%;
-    margin: auto;
   }
-     
   .calculator h3 {
     color: var(--primary-color);
     font-weight: 700;
@@ -307,29 +305,24 @@
   <h3 id="calculator-title">Calculadora de Serviços & Orçamento</h3>
   <form id="calcForm" onsubmit="return false;">
     <div class="service-item">
-  <input type="checkbox" id="formatacao" name="services" value="25">
-  <label for="formatacao">Formatação</label>
-</div>
-<div class="service-item">
-  <input type="checkbox" id="backup" name="services" value="10">
-  <label for="backup">Backup de arquivos</label>
-</div>
-
+      <label for="formatacaoChk">Formatação de Computador (€65)</label>
+      <input type="checkbox" id="formatacaoChk" name="services" value="65" />
+    </div>
     <div class="service-item">
-      <label for="criacaoChk">Criação de Site a partir de (€150 )</label>
+      <label for="criacaoChk">Criação de Site (€150)</label>
       <input type="checkbox" id="criacaoChk" name="services" value="150" />
     </div>
     <div class="service-item">
-      <label for="limpezaChk">Limpeza e Otimização (€20)</label>
-      <input type="checkbox" id="limpezaChk" name="services" value="20" />
+      <label for="limpezaChk">Limpeza e Otimização (€50)</label>
+      <input type="checkbox" id="limpezaChk" name="services" value="50" />
     </div>
     <div class="service-item">
-      <label for="instalacaoChk">Instalação de Programas (€15)</label>
-      <input type="checkbox" id="instalacaoChk" name="services" value="15" />
+      <label for="instalacaoChk">Instalação de Programas (€35)</label>
+      <input type="checkbox" id="instalacaoChk" name="services" value="35" />
     </div>
     <div class="service-item">
-      <label for="montagemChk">Montagem de Computador A partir de (€30) </label>
-      <input type="checkbox" id="montagemChk" name="services" value="30" />
+      <label for="montagemChk">Montagem de Computador (€90)</label>
+      <input type="checkbox" id="montagemChk" name="services" value="90" />
     </div>
     <p class="total" aria-live="polite" id="totalPrice">Total: €0</p>
     <a href="#" class="btn-whatsapp" id="whatsappBtn" aria-label="Enviar orçamento pelo WhatsApp" target="_blank" rel="noopener noreferrer" tabindex="0">
