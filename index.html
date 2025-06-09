@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -131,7 +132,7 @@
     border-radius: var(--border-radius);
     padding: 1.8rem 2rem;
     box-shadow: inset 0 0 15px rgb(13 110 253 / 0.2);
-    max-width: 640px;
+    
     width: 100%;
   }
   .calculator h3 {
@@ -198,6 +199,14 @@
       margin: 1rem auto 3rem;
       padding: 0 1rem;
     }
+  }
+
+  .container-calculadora {
+    width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap:18px;
   }
 </style>
 </head>
@@ -293,33 +302,39 @@
 
 <!-- Calculadora e orçamento -->
 <section aria-labelledby="calculator-title" class="calculator" role="region">
+  <div class="container-calculadora">
   <h3 id="calculator-title">Calculadora de Serviços & Orçamento</h3>
   <form id="calcForm" onsubmit="return false;">
     <div class="service-item">
-      <label for="formatacaoChk">Formatação de Computador (€65)</label>
-      <input type="checkbox" id="formatacaoChk" name="services" value="65" />
+      <label for="formatacaoChk">Formatação de Computador (€30)</label>
+      <input type="checkbox" id="formatacaoChk" name="services" value="30" />
     </div>
     <div class="service-item">
-      <label for="criacaoChk">Criação de Site (€150)</label>
+      <label for="formatacaoChk">Backup (€15)</label>
+      <input type="checkbox" id="formatacaoChk" name="services" value="15" />
+    </div>
+    <div class="service-item">
+      <label for="criacaoChk">Criação de Site a partir de (€150 )</label>
       <input type="checkbox" id="criacaoChk" name="services" value="150" />
     </div>
     <div class="service-item">
-      <label for="limpezaChk">Limpeza e Otimização (€50)</label>
-      <input type="checkbox" id="limpezaChk" name="services" value="50" />
+      <label for="limpezaChk">Limpeza e Otimização (€20)</label>
+      <input type="checkbox" id="limpezaChk" name="services" value="20" />
     </div>
     <div class="service-item">
-      <label for="instalacaoChk">Instalação de Programas (€35)</label>
-      <input type="checkbox" id="instalacaoChk" name="services" value="35" />
+      <label for="instalacaoChk">Instalação de Programas (€15)</label>
+      <input type="checkbox" id="instalacaoChk" name="services" value="15" />
     </div>
     <div class="service-item">
-      <label for="montagemChk">Montagem de Computador (€90)</label>
-      <input type="checkbox" id="montagemChk" name="services" value="90" />
+      <label for="montagemChk">Montagem de Computador A partir de (€30) </label>
+      <input type="checkbox" id="montagemChk" name="services" value="30" />
     </div>
     <p class="total" aria-live="polite" id="totalPrice">Total: €0</p>
     <a href="#" class="btn-whatsapp" id="whatsappBtn" aria-label="Enviar orçamento pelo WhatsApp" target="_blank" rel="noopener noreferrer" tabindex="0">
       Enviar Orçamento no WhatsApp
     </a>
   </form>
+  </div>
 </section>
 
 </main>
@@ -357,7 +372,7 @@
       );
 
       // Número de WhatsApp formatado internacionalmente (exemplo Espanha: +34 600 000 000)
-      const whatsappNumber = "34600000000"; // Troque para seu número real
+      const whatsappNumber = "+34685093192"; // Troque para seu número real
 
       whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${message}`;
       whatsappBtn.style.pointerEvents = "auto";
