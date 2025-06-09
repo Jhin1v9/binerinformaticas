@@ -308,11 +308,11 @@
   <form id="calcForm" onsubmit="return false;">
     <div class="service-item">
       <label for="formatacaoChk">Formatação de Computador (€30)</label>
-      <input type="checkbox" id="formatacaoChk" name="services" value="30" />
+      <input type="checkbox" id="formatacao" name="services" value="30" />
     </div>
     <div class="service-item">
       <label for="formatacaoChk">Backup (€15)</label>
-      <input type="checkbox" id="formatacaoChk" name="services" value="15" />
+      <input type="checkbox" id="backup" name="services" value="15" />
     </div>
     <div class="service-item">
       <label for="criacaoChk">Criação de Site a partir de (€150 )</label>
@@ -345,7 +345,6 @@
 </footer>
 
 <script>
-  // Atualiza o total e link WhatsApp ao marcar serviços
   function updateTotal() {
     const checkboxes = document.querySelectorAll('input[name="services"]');
     let total = 0;
@@ -359,22 +358,16 @@
       }
     });
 
-    const totalPriceEl = document.getElementById('totalPrice');
-    totalPriceEl.textContent = `Total: €${total}`;
+    document.getElementById('totalPrice').textContent = `Total: €${total}`;
 
     const whatsappBtn = document.getElementById('whatsappBtn');
-
     if (total > 0) {
-      // Monta mensagem para WhatsApp com os serviços selecionados e valor total
       const message = encodeURIComponent(
         `Olá! Gostaria de solicitar um orçamento dos seguintes serviços:\n\n` +
         selectedServices.map(s => `- ${s}`).join('\n') +
         `\n\nTotal estimado: €${total}\n\nObrigado!`
       );
-
-      // Número de WhatsApp formatado internacionalmente (exemplo Espanha: +34 600 000 000)
-      const whatsappNumber = "+34685093192"; // Troque para seu número real
-
+      const whatsappNumber = "+34685093192";
       whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${message}`;
       whatsappBtn.style.pointerEvents = "auto";
       whatsappBtn.style.opacity = "1";
@@ -385,12 +378,29 @@
     }
   }
 
-  // Adiciona event listeners aos checkboxes
+  function setupDependencies() {
+    const formatacao = document.getElementById("formatacao");
+    const backup = document.getElementById("backup");
+
+    function checkDependency() {
+      if (formatacao.checked) {
+        backup.disabled = false;
+      } else {
+        backup.checked = false;
+        backup.disabled = true;
+      }
+      updateTotal();
+    }
+
+    formatacao.addEventListener("change", checkDependency);
+    checkDependency(); // inicializar
+  }
+
   document.querySelectorAll('input[name="services"]').forEach(cb => {
     cb.addEventListener('change', updateTotal);
   });
 
-  // Inicializa botão desativado
+  setupDependencies();
   updateTotal();
 </script>
 
